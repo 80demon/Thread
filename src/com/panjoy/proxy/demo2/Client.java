@@ -7,12 +7,11 @@ import java.util.Stack;
 
 public class Client {
     public static void main(String[] args) {
-        Stack<Interceptor> interceptorStack=new Stack<>();
+        Stack<Interceptor> interceptorStack = new Stack<>();
         interceptorStack.add(new LogInterceptor());
         interceptorStack.add(new TranscationInterceptor());
-        Target target=(Target) TargetProxy.getInstance(new TargetImpl(),interceptorStack);
+        Target target = (Target) TargetProxy.getInstance(new TargetImpl(), interceptorStack);
         target.execute();
-
     }
 }
 
