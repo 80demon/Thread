@@ -65,10 +65,10 @@ public class ClassLoader2 extends ClassLoader {
     public static void main(String[] args) throws  Exception{
         ClassLoader2 loader1 = new ClassLoader2();
        // ClassLoader2 loader2 = new ClassLoader2(loader1);
-        //loader2.setPath("D://data//");
+        loader1.setPath("D://data//");
         //test01(loader1);  // getParent~~~:com.test.AppClassLoader
        // test01(loader2);  // getParent~~~:com.test.ClassLoaderTest02
-        test02(loader1);
+        test01(loader1);
     }
 
     /**
@@ -80,7 +80,7 @@ public class ClassLoader2 extends ClassLoader {
                 ClassLoader2.class.getClassLoader().getClass().getName());
         System.out.println("getParent~~~:" +
                 loader.getParent().getClass().getName());
-        Class<?> clazz = loader.loadClass("com.panjoy.classloader.Animal"); // AppClassLoader
+        Class<?> clazz = loader.loadClass("Animal"); // AppClassLoader
         System.out.println("clazz~~~:"
                 + clazz.getClassLoader().getClass().getName());
         System.out.println("Animal~~~:" + Animal.class.getClassLoader());
@@ -100,7 +100,7 @@ public class ClassLoader2 extends ClassLoader {
                 ClassLoader2.class.getClassLoader().getClass().getName());
         System.out.println("getParent~~~:" +
                 loader.getParent().getClass().getName());
-        Class<?> clazz = loader.findClass("com.panjoy.classloader.Animal"); // ClassLoaderTest02
+        Class<?> clazz = loader.findClass("Animal"); // ClassLoaderTest02
         System.out.println("clazz~~~:" +
                 clazz.getClassLoader().getClass().getName());
         Object animalObj = clazz.newInstance(); // classloader不一致, 通过reflect调用
